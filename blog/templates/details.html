@@ -3,9 +3,10 @@
 {%block content%}
 <h1>{{post.title}}</h1><br>
 
-<small> By:{{post.author.first_name}}-{{post.author.last_name}}</small><br>
+<small> By:{{post.author.first_name}}-{{post.author.last_name}}-{{post.post_date}}</small><br>
 <hr>
  <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary" >Edit</a>
+ <small> <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" >Delete</a></small>
 {{post.body}}
 
 <br>

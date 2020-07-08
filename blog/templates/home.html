@@ -7,6 +7,7 @@
 {% for post in object_list %}
     <li><a href="{% url 'details' post.pk %}"> {{post.title}} </a> - {{post.author.first_name}}  {{post.author.last_name}}<br>
         <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary" >Edit</a>
+        <small> <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" >Delete</a></small>
     </li>
 
 
