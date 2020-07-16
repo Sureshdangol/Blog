@@ -26,7 +26,7 @@ def CategoryView(request,cats):
 
 def CategoryListView(request):
     cat_menu_list = Category.objects.all()
-    return  render(request,'category_list.html',{'cat_menu_list':cat_menu_list})
+    return  render(request,'category_list.html',{'cat_menu_list': cat_menu_list})
 
 
 class BlogDetailView(DetailView):
