@@ -9,7 +9,7 @@
 <hr>
 
 {% if user.is_authenticated %}
-     {% if user.id==post.author.id%}
+     {% if user.id == post.author.id%}
      <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary" >Edit</a>
      <small> <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" >Delete</a></small>
      {% endif%}
