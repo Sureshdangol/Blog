@@ -5,12 +5,14 @@
 
 {% if user.is_authenticated %}
 <h1>Add Post Page</h1>
-<form method="POST">
+<div class="'form-group">
+<form method="POST"enctype="multipart/form-data">
     {% csrf_token %}
     {{form.media}}
     {{form.as_p}}
     <button class="btn btn-secondary">Post</button>
 </form>
+</div>
 
 <script>
     var name = "{{user.id}}";
@@ -20,5 +22,4 @@
 {% else %}
 <h1>You are not Logged In !!!</h1>
 {% endif %}
-
 {% endblock%}
