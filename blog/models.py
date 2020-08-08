@@ -14,6 +14,15 @@ class Category(models.Model):
         #return  reverse('details',args=(str(self.id)))
         return  reverse('home')
 
+
+class Profile(models.Model):
+    user= models.OneToOneField(User, null=True,on_delete=models.CASCADE)
+    bio = models.TextField()
+
+    def __str__(self):
+        return str(self.user)
+
+
 class Post(models.Model):
     title = models.CharField(max_length=255)
     image = models.ImageField(null=True,blank=True,upload_to='images/')
@@ -36,15 +45,3 @@ class Post(models.Model):
         #return  reverse('details',args=(str(self.id)))
         return  reverse('home')
 
-class Profile(models.Model):
-    user = models.OneToOneField(User,null=True,on_delete=models.CASCADE)
-    bio = models.TextField()
-    profile_image = models.ImageField(null=True, blank=True, upload_to='images/profile/')
-    website_url = models.CharField(max_length=255,null=True, blank=True)
-    fb_url = models.CharField(max_length=255, null=True, blank=True)
-    twitter_url = models.CharField(max_length=255, null=True, blank=True)
-    git_url = models.CharField(max_length=255, null=True, blank=True)
-
-
-    def __str__(self):
-        return str(self.user)
