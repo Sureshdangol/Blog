@@ -54,6 +54,7 @@
 
         <h5 class="card-title">{{post.author.first_name}}-{{post.author.last_name}}</h5>
             <p  class="text-muted">
+                 <a href=" {% url 'showprofile' post.author.profile.id   %}" >Profile |  </a>
                {% if post.author.profile.fb_url %}
                  <a href=" {{post.author.profile.fb_url}}" >Facebook |  </a>
                 {% endif %}
