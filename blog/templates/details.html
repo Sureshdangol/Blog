@@ -39,6 +39,20 @@
      {% endif %}
            {{total_likes }} Likes
 </form>
+<br>
+<br>
+<h1>Comments</h1>
+{% if not post.comments.all%}
+    No comments Yet...<a href="#">Add One</a>
+{% else %}
+<a href="{%url 'add_comment' post.pk %}"> Add comments</a>
+    {% for comment in post.comments.all%}
+        {{ comment.name}}-{{comment.date_added}}<br>
+        {{comment.body}}
+    {% endfor %}
+{% endif%}
+<br>
+<br>
 
 <div class="card mb-3" style="max-width: 700px;">
   <div class="row no-gutters">
