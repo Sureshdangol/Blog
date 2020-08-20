@@ -7,19 +7,19 @@
 <form method="POST">
     {% csrf_token %}
     <div class="form-row">
-
         <div class="form-group col-md-6">
-        <label >Username</label>
-        <input type="text" class="form-control" name="username">
+            <input type="text" class="form-control" name="username" placeholder="Username">
         </div>
     </div>
     <div class="form-row">
         <div class="form-group col-md-6">
-        <label >Password</label>
-        <input type="password" class="form-control" name="password">
-         </div>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+        </div>
     </div>
-    <button type="button" class="btn btn-info">LOG IN</button>
+
+    <button type="submit" class="btn btn-primary">LOG</button>
+
+</form>
 
     <br>
     Not Register? Sign Up <a href="{% url 'register'%}" >Here</a>

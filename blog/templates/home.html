@@ -1,8 +1,67 @@
 {% extends 'base.html'%}
 {% block content%}
+<br>
 
-<h1>Home Page</h1>
-<ul>
+
+
+<br><br>
+
+
+
+<div class="card bg-light mb-5" style="max-width: 100rem;">
+    {% for post in object_list %}
+          <div  class ="card text-white bg-secondary mb-3">
+               <div class="card-header">
+              <h4>{{post.author.first_name}} {{post.author.last_name}} - {{post.post_date}}</h4>
+                   <h4><center><a href="{% url 'category' post.category|slugify%}">{{post.category}}</a><br></center></h4>
+              {% if user.is_authenticated %}
+                    {% if user.id == post.author.id%}
+                        <small><a href="{% url 'update_post' post.pk %}" class="btn btn-primary">Edit</a></small>
+                        <snmall><a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" >Delete</a></snmall>
+                    {% endif %}
+              {% endif %}
+          </div>
+</div>
+        <div class="card-body">
+            <center> <h3 class="card-title"><a href="{% url 'details' post.pk %}"> {{post.title}} </a> </h3></center>
+
+        </div>
+    {% endfor %}
+</div>
+
+
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a class="btn btn-outline-info mb-4" href="?page=1">&laquo; First</a>
+            <a class="btn btn-outline-info mb-4"  href="?page={{ page_obj.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+            <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<ul>
 
 {% for post in object_list %}
     <li><a href="{% url 'details' post.pk %}"> {{post.title}} </a> - {{post.author.first_name}}
@@ -21,5 +80,5 @@
     </li>
 {% endfor %}
 </ul>
-
+-->
 {% endblock%}

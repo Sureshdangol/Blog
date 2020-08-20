@@ -11,7 +11,8 @@
     <title>{{post.title}}</title>
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
   <a class="navbar-brand" href="{% url 'home'%}">Suresh Blog</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -46,9 +47,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{% url 'add_category' %}">Add Category</a>
           </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'edit_profile' %}">Profile</a>
-          </li>
+
 
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -78,11 +77,13 @@
             </li>
           {% endif %}
         </ul>
+
       </div>
 </nav>
 
 
   <div class="container">
+      <center><h1>Welcome To MtBlog</h1></center>
     {% block content%}
 
     {% endblock %}

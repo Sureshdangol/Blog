@@ -1,12 +1,28 @@
 from django.shortcuts import render,get_object_or_404
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
-# Create your views here.
-#def home(request):
- #   return  render(request,'home.html',{})
 from blog.models import Post, Category, Comment
 from .forms import PostForm, EditForm, EditCommentForm
 from django.urls import reverse_lazy, reverse
 from django.http import  HttpResponseRedirect
+from django.core.paginator import Paginator
+
+
+# Create your views here.
+#def home(request):
+ #   return  render(request,'home.html',{})
+
+
+#class PageList(ListView):
+    #paginate_by = 2
+    #model = Post
+
+#def PageList(request):
+    #post_list = Post.objects.all()
+    #paginator = Paginator(post_list,2)
+
+    #page_number = request.GET.get('page')
+    #page_obj = paginator.get_page(page_number)
+    #return render(request,'home.html',{'page_obj':page_obj})
 
 
 def LikeView(request,pk):
@@ -26,6 +42,7 @@ class HomeView(ListView):
     template_name = 'home.html'
     #ordering = [-'id']
     ordering = ['-post_date']
+    paginate_by = 4
 
     def get_context_data(self, *args, **kwargs):
         cat_menu = Category.objects.all()

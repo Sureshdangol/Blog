@@ -2,29 +2,12 @@
 {% load static %}
 {%block title%} {{post.title_tag}}{% endblock %}
 {%block content%}
+<br>
 
-
-<h1>{{post.title}}</h1><br>
-
-<small> By:{{post.author.first_name}}-{{post.author.last_name}}-{{post.post_date}}</small><br>
+<h4>{{post.title}}</h4><br>
+<h6> By : {{post.author.first_name}}-{{post.author.last_name}} - {{post.post_date}}</h6>
 <hr>
-
-{% if user.is_authenticated %}
-     {% if user.id == post.author.id%}
-     <a href="{% url 'update_post' post.pk %}" class="btn btn-secondary" >Edit</a>
-     <small> <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" >Delete</a></small>
-     {% endif%}
-{% endif %}
-{% if post.image%}
-     <img src ="{{post.image.url }}">
-{% endif%}
-{{post.body| safe}}
-
-<br>
-<br>
-<a href="{% url 'home'%}" class="btn btn-secondary">Back</a>
-
-<br/>
+<h3>{{post.body| safe}}</h3>
 <hr>
 <form action="{% url 'like_post'  post.pk %}" method = "POST">
      {% csrf_token %}
@@ -39,6 +22,21 @@
      {% endif %}
            {{total_likes }} Likes
 </form>
+<hr>
+{% if user.is_authenticated %}
+     {% if user.id == post.author.id%}
+     <small><a href="{% url 'update_post' post.pk %}" class="btn btn-secondary" >Edit</a></small>
+     <small> <a href="{% url 'delete_post' post.pk %}" class="btn btn-danger" >Delete</a></small>
+     {% endif%}
+{% endif %}
+{% if post.image%}
+     <img src ="{{post.image.url }}">
+{% endif%}
+
+
+
+
+
 <br>
 <br>
 <h1>Comments</h1>
